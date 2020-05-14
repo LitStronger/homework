@@ -1,0 +1,6 @@
+receive data2
+receive data3
+total 24
+-rw-rw-r-- 1 lyq lyq    28 5月  14 21:45 1.txt
+-rwxrwxr-x 1 lyq lyq 13584 5月  14 21:44 shell
+-rw-rw-r-- 1 lyq lyq  3380 5月  14 21:44 simple_shell.c

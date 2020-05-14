@@ -13,7 +13,7 @@ void *memset(void *s, int ch, size_t n);
 problem: 当%c格式的时候，会读取任何字符，包括换行和空格。
 当其他格式的时候版(不包括正则表达式)， 如果空格或者换行出现在前面，会被读取并抛弃
 
-solve: sanf()函数在接收字符串时，遇到空格就会停止接收。可以使用gets()函数代替,然而系统提示gets不安全。
+solve: scanf()函数在接收字符串时，遇到空格就会停止接收。可以使用gets()函数代替,然而系统提示gets不安全。
 ```
 
 ![1587634536120](C:/Users/啦啦啦/AppData/Roaming/Typora/typora-user-images/1587634536120.png)
@@ -64,6 +64,7 @@ main(){
 }
 选择execvp的原因：
     首先说参数传递。之所以选择execvp这个函数是因为该函数可以传递变长参数，也就是说，虽然参数列表度中只是两个指针变量，但由于第二个指针变量是变长指针数组，第二个参数传入参数个数实际是该数组的长度，可以通过控制指针数组的长度来控制传入的参数数量。
+    
     替换地址空间,实则将原进程的代码段，数据段进行替换，并未创建新的进程出来。
 ```
 
@@ -107,3 +108,43 @@ pid_t wait(int* status);
 wait(NULL);等待子进程结束，回收子进程
 ```
 
+
+
+函数名： dup2
+
+功能： 复制文件描述符
+
+用法： int dup2(int oldfd,int newfd);
+
+“输出重定向”的功能可以用 dup2(fd ,1) 。或者是dup(fd, STDOUT_FILENO)
+
+![1589460403277](C:/Users/啦啦啦/AppData/Roaming/Typora/typora-user-images/1589460403277.png)
+
+![1589458668831](C:/Users/啦啦啦/AppData/Roaming/Typora/typora-user-images/1589458668831.png)
+
+![1589458599095](C:/Users/啦啦啦/AppData/Roaming/Typora/typora-user-images/1589458599095.png)
+
+<http://blog.chinaunix.net/uid-31433594-id-5761435.html>
+
+problem为啥执行完close(fd)后还能接收终端输出？
+
+![1589446534909](C:/Users/啦啦啦/AppData/Roaming/Typora/typora-user-images/1589446534909.png)
+
+同时存在管道和重定向时，优先级问题？
+
+
+
+
+
+管道
+
+Shell中通过`fork`+`exec`创建子进程来执行命令。如果是含管道的Shell命令，则管道前后的命令分别由不同的进程执行，然后**通过管道把两个进程的标准输入输出连接起来**，就实现了管道。
+
+
+
+在Shell中要实现管道这样的效果，有4个步骤：
+
+1. 创建pipe
+2. fork两个子进程执行管道前后的命令
+3. 把第一个子进程(前者)的标准输出重定向到管道数据入口
+4. 把第二个子进程(后者)的标准输入重定向到管道数据出口

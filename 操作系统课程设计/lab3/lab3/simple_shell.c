@@ -30,7 +30,11 @@ int main(){
 		buf_parse(buf, argv);
 		//printf("buf:%s", buf);
 		//printf("argv[0]:%s argv[1]:%s argv[2]:%s\n", argv[0], argv[1], argv[2]);
-		
+
+
+
+		if(strcmp(buf,"exit") == 0) break;
+
 
 		/* command execute */
 		cmd_execute(buf, argv);
@@ -62,18 +66,15 @@ void buf_parse(char *buf, char *argv[]){
 void cmd_execute(char *buf, char *argv[]){
         pid_t pid = fork();
         if(pid == 0){
-		printf("child\n");
 
-		// find ">" then redierct
+		// find ">", redierct
 		redirect(argv);
 		
         	execvp(buf, argv);
-                perror("fork");
+                perror("Command not found");
                 exit(1);
         }
-	else{
-		printf("father\n");
-	}
+
         wait(NULL); 
 }
 

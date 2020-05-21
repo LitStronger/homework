@@ -1,7 +1,3 @@
-```
-
-```
-
 
 
 ```
@@ -133,6 +129,12 @@ problem为啥执行完close(fd)后还能接收终端输出？
 同时存在管道和重定向时，优先级问题？
 
 
+
+将可执行文件添加到系统环境
+
+![1590048894422](C:/Users/啦啦啦/AppData/Roaming/Typora/typora-user-images/1590048894422.png)
+
+![1590047323201](C:/Users/啦啦啦/AppData/Roaming/Typora/typora-user-images/1590047323201.png)
 
 
 

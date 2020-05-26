@@ -57,9 +57,7 @@ int main()
 	int recvfd = recv(sockfd, buf, MAX_DATA, 0); 
 	printf("recv的返回值是：%d\n",recvfd);
 	printf("%s\n", buf);
-	recvfd = recv(sockfd, buf, MAX_DATA, 0); 
-	printf("recv的返回值是：%d\n",recvfd);
-	printf("%s\n", buf);
+
 	
 	int exit = 0;
 	char buf2[MAX_DATA] = "adc";
@@ -68,6 +66,7 @@ int main()
 //connectfd = connect(sockfd,(struct sockaddr *)&dest_addr, sizeof(struct sockaddr));
 //	printf("connect返回值：%d\n", connectfd);
 	while(!exit){
+		printf("input: ");
 		scanf("%s",buf2);
 		printf("输入值为%s\n",buf2);
 		int sendfd = send(sockfd, buf2, MAX_DATA, 0);

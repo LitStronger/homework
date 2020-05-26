@@ -29,6 +29,7 @@ int main()
 	
 	int listenfd = listen(sockfd, 5);//最大连接个数设置为5
 	printf("listen的返回值：%d\n", listenfd);
+	printf("listening..."); 
 	
 	int sin_size = sizeof(struct sockaddr_in);//协议地址的长度（结构体大小） 
 	int acceptfd = accept(sockfd, (struct sockaddr *)&dest_addr, &sin_size);//sockaddr_in
@@ -37,19 +38,17 @@ int main()
 	
 	int sendfd = send(acceptfd, buf, strlen(buf), 0);
 	printf("send的返回值：%d\n", sendfd);
-	send(acceptfd, buf, strlen(buf), 0);
-	printf("send的返回值：%d\n", sendfd);
-	send(acceptfd, buf, strlen(buf), 0);	
+	
 	//在循环中接收信息 
 	int stop_receive_flag = 0; 
 	char buf2[MAX_DATA];
 
 	while(!stop_receive_flag){
-		printf("性感服务端在线等撩ing...\n");
 		int recvfd = recv(acceptfd, buf2, MAX_DATA, 0);
 		printf("recv的返回值：%d\n", recvfd);
 		printf("来自客户端的消息：%s\n", buf2);
 		printf("接收完成\n"); 
+		
 		if(buf2[0] == '1'){		//客户端通过发送1关闭服务端 
 			stop_receive_flag = 1; 
 		}

@@ -102,6 +102,8 @@ pid_t wait(int* status);
 
 ```
 wait(NULL);等待子进程结束，回收子进程
+
+wait(NULL)等待子进程退出。NULL的意思是退出状态不关注。如果要获取退出状态应该写成wait(&status);
 ```
 
 
@@ -150,3 +152,11 @@ Shell中通过`fork`+`exec`创建子进程来执行命令。如果是含管道�
 2. fork两个子进程执行管道前后的命令
 3. 把第一个子进程(前者)的标准输出重定向到管道数据入口
 4. 把第二个子进程(后者)的标准输入重定向到管道数据出口
+
+
+
+
+
+
+
+wait(NULL)等待子进程退出。[NULL](https://www.baidu.com/s?wd=NULL&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)的意思是退出状态不关注。如果要获取退出状态应该写成wait(&status);

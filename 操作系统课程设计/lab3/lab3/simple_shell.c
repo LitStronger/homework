@@ -93,7 +93,7 @@ void redirect(char * argv[])
 	        	argv[i] = NULL; 
 		        
 			// parse，create/open file
-	        	int fd =open(argv[i+1], O_RDWR|O_CREAT|O_TRUNC, 0664);
+	        int fd =open(argv[i+1], O_RDWR|O_CREAT|O_TRUNC, 0664);
 			printf("open file: %s\n", argv[i+1]);
 		       	if(fd == -1){
 				perror("open");

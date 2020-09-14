@@ -1,0 +1,5 @@
+实验七的拓扑图：loopback的地址应该都是以1结尾（如172.16.1.1）
+实验八OSPF的vlan：vlan10: 172.16.1.2
+	       vlan50: 172.16.5.1
+	三层交换机需开启路由功能：ip routing
+          RIP的：show IP rip interface 改成show ip route 和 show ip protocols

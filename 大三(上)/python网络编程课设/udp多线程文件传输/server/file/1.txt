@@ -1,0 +1,6 @@
+犯了个很蠢的错误，打开一个文件(open)使用参数的应该是文件名，一直把文件内容的第一个字节作为参数，导致报错“传入了一个无效的参数”
+
+数据包的长度问题。如果接收缓冲区的大小是1024的话，那么注意，读取文件就不能直接读1024了，因为还要加上操作码等，会使最终发送的数据包长度超过1024
+
+传输后的文件名后会多出一些b"\x00"
+https://blog.csdn.net/shihoongbo/article/details/84135906?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase
